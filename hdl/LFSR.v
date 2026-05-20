@@ -2,12 +2,6 @@
 // This public release is licensed under CERN-OHL-S-2.0.
 // The copyright holder may also license the work separately under different terms.
 
-// 32-bit XNOR LFSR with polynomial taps at bits 31, 21, 1, 0
-// (maximum-length sequence, period 2^32 - 1).
-// Update rate: ~192 kHz from 12 MHz system clock
-// (every ~62 cycles, controlled via internal counter).
-// Used for excitation in the measurement scenarios of Fig. 9-11.
-
 `timescale 1ns / 1ps
 
 module LFSR(
