@@ -11,19 +11,18 @@ board (digilentinc.com:cmod_a7-35t:part0:1.1). Add all files from hdl/
 and constraints/, set TOP as the top module, and run synthesis, 
 implementation, and bitstream generation.
 
-Expected utilization: approximately 470-520 LUTs for the filter, 
-0 DSP blocks, depending on synthesis settings. The complete synthesized 
+Expected utilization: approximately 470-520 LUTs for the filter depending on measurement configuration. The complete synthesized 
 design additionally includes a LFSR excitation source 
-(20 LUTs), which serves as a built-in test signal and is not part of 
+(around 20 LUTs), which serves as a built-in test signal and is not part of 
 the filter itself.
 
 These resources are lower than the 566 LUTs reported in Table II of the 
 paper, because the static AE wrapper drives the filter parameters with 
-compile-time localparams instead of runtime-configurable inputs.
+localparams instead of runtime-configurable inputs.
 
 ### Measurement Configurations
 
-The bitstream filter exposes cutoff (alpha), resonance, and input gain as runtime-capable
+The bitstream filter exposes cutoff (alpha), resonance, and input gain as
 parameter inputs. In `TOP.v`, these inputs are driven by compile-time
 `localparam` values to provide reproducible static AE builds. The default
 configuration corresponds to Fig. 10 @TAP_4. To reproduce other figures, modify
@@ -63,7 +62,7 @@ The measurement chain corresponds to Fig. 8 in the paper:
   routed to a Keysight N9322C spectrum analyzer through a 1 kΩ series 
   resistor for full-band measurements.
 - **FILTER_OUT** (V8): On the carrier board, this pin is 
-  connected to an analog low-pass filter (60 kHz cutoff) followed by a 
+  connected to a second order analog low-pass filter (60 kHz cutoff) followed by a 
   24-bit audio interface at 192 kHz. Audio-band measurements use a 
   65536-point FFT with Hann window and 60 s averaging.
 
@@ -74,8 +73,8 @@ Required: numpy, matplotlib, pandas.
 Tested with Python 3.10.11.
 
 ### Simulations (Fig. 3)
-The analytical and sample-by-sample simulation data/scripts for Fig. 3 are
-provided under `simulation/fig3_noise_shaping/`.
+The analytical noise transition and sample-by-sample simulation data/scripts for Fig. 3 are
+provided under `simulation/`.
 
 ### Hardware measurements (Fig. 9-12)
 Each subfolder under `measurements/` contains the raw spectrum analyzer 
