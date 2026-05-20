@@ -1,3 +1,11 @@
+# Bitstream-Domain FPGA Ladder Filter
+
+Artifact accompanying a paper.
+
+This repository contains the Verilog HDL design of a multiplier-free 
+bitstream-domain IIR ladder filter, hardware measurement data, and 
+Python scripts to reproduce and evaluate the measurement and simulation results.
+
 ## HDL Design
 
 Target platform: Digilent Cmod A7-35T (Xilinx XC7A35T).  
